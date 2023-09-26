@@ -15045,7 +15045,7 @@ Elapsed time: 5382.277954 seconds
 <ol>
 <li>Lasso_min2 and Lasso_refit2 yield best performances</li>
 <li>Ridge and PCR yield worst performances</li>
-<li>Ridge and PCR perform worse in case II, ridge will only soft the contribution(d/(d^2+lambda)) from each PCR components and the newly introduced random features all have some fixed variance and will still contribute, but these features will give more variances in the MSPE; similar for PCR as it will also include contributions from these random features if the variance is significant.</li>
+<li>Ridge and PCR perform worse in case II, Ridge will only soft the contribution(d/(d^2+lambda)) from each PCR components and the newly introduced random features all have some fixed variance and will still contribute, but these features will give more variances in the MSPE; similarly for PCR as it will also include contributions from these random features if the variance is significant. On the other hand, Lasso performs better with sparse features which is our case.</li>
 <li>No, the performances are worse as more features will give more test errors if those do not reduce bias</li>
 </ol>
 
