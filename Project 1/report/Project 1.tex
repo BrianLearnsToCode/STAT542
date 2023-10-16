@@ -1,0 +1,192 @@
+\documentclass[12pt]{article}
+%\documentclass[aps,reprint]{revtex4-1}
+\usepackage{hyperref}
+\usepackage{graphicx}% Include figure files
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{tipa}
+\usepackage{subfig} % caution: not compatible with revtex4
+\usepackage{xcolor}
+\usepackage{mathrsfs}
+\bibliographystyle{unsrt}
+\theoremstyle{plain}
+
+%%%%%%-- TikZ package
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{arrows}
+\usetikzlibrary{intersections}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{decorations.pathmorphing, patterns,shapes}
+
+
+%\usepackage[margin=2cm]{caption}
+\usepackage[nosort]{cite}
+
+%--- shape control
+\setlength{\topmargin}{-0.3in} 
+\setlength{\oddsidemargin}{.0in}
+%\setlength{\evensidemargin}{-.21in}
+\setlength{\textheight}{8.5in} 
+\setlength{\textwidth}{6.35in}
+\setlength{\footnotesep}{\baselinestretch\baselineskip}
+\newlength{\abstractwidth}
+\setlength{\abstractwidth}{\textwidth}
+\addtolength{\abstractwidth}{-6pc}
+
+%--- title page set
+\renewcommand{\title}[1]{\vbox{\center\bf{\Large{#1}}}\vspace{5mm}}
+\renewcommand{\author}[1]{\vbox{\center#1}\vspace{5mm}}
+\newcommand{\address}[1]{\vbox{\center\em#1}}
+\newcommand{\email}[1]{\vbox{\center\tt#1}\vspace{5mm}}
+  
+%---New math environment
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+
+\newenvironment{pf}[1][Proof]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{defn}[1][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{ex}[1][Example]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{rmk}[1][Remark]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+%---- redefine
+\renewcommand{\bar}{\overline}
+\renewcommand{\tilde}{\widetilde}
+\renewcommand{\hat}{\widehat}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+
+%---- macros 
+\newcommand{\QTr}{\widetilde{\operatorname{Tr}}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\nn}{\nonumber}
+\newcommand{\Pf}{\operatorname{Pf}}
+\newcommand{\const}{\operatorname{const}}
+
+\newcommand{\SU}{\operatorname{SU}}
+\newcommand{\SO}{\operatorname{SO}}
+\newcommand{\SL}{\operatorname{SL}}
+\newcommand{\GL}{\operatorname{GL}}
+\newcommand{\PSL}{\operatorname{PSL}}
+\newcommand{\UU}{\operatorname{U}}
+%---- marcos for math font 
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\calA}{\mathcal{A}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\calD}{\mathcal{D}}
+\newcommand{\calE}{\mathcal{E}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calL}{\mathcal{L}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calN}{\mathcal{N}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\calT}{\mathcal{T}}
+
+\newcommand{\calJ}{\mathcal{J}}
+\newcommand{\Jeff}{\calJ}
+\newcommand{\eff}{\textrm{eff}}
+\newcommand{\Cl}{\textrm{Cl}}
+\newcommand{\Diff}{\operatorname{Diff}}
+\newcommand{\sgn}{\operatorname{sgn}}
+
+
+
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+
+
+\newcommand{\YG}[1]{\textcolor{red}{#1}}
+\newcommand{\WF}[1]{\textcolor{blue}{#1}}
+
+
+
+\usepackage{fancyhdr}
+
+
+%\cfoot{center of the footer!}
+\begin{document}
+
+
+\begin{center}
+\title{STAT 542 Project 1: House Price Prediction}
+
+\author{Wenbo Fu (679744457), Bingyan Liu (668046518)}
+
+\end{center}
+  
+
+\baselineskip=17.63pt 
+
+
+\section{Data and Objective}
+
+The data contains the training data and the test data, with the sale price as the target prediction feature. The goal is to reduce the Root-Mean-Squared-Error (RMSE) between the logarithm of the predicted price and the logarithm of the observed sables price.
+\begin{equation}
+\sqrt{\frac{1}{\text{n.test}}\sum_{j=1}^{\text{n.test}}(\hat{y}_j-y_j)^2}
+\end{equation}
+The RMSEs should be less than 0.125 for the initial 5 folders and less than 0.135 for the last 5 folders.
+
+The details can be found in \url{https://liangfgithub.github.io/Proj/F23_Proj1.pdf}. 
+
+\section{Method}
+Our algorithm contains two parts: data preprocessing and model fit. 
+
+The data preprocessing part takes the training data and testing data as inputs, which contains the following steps:
+\begin{itemize}
+\itemsep0em
+\item On the training data set, fill the missing values in the Garage\_Yr\_Blt column with value 0.
+\item Remove imbalanced features, where imbalanced features are determined by more than 95\% of the sample feature values are the same.
+\item Winsorize numerical features, by setting all values higher than 0.95 quantile of all sample feature values to the 0.95 quantile.
+\item Standardize the numerical features with the StandardScaler class.
+\item One hot encode categorical features with the OneHotEncoder class.
+\item On the testing data set, follow similar steps: fill the Garage\_Yr\_Blt column with value 0; remove imbalanced features found from the training data; winsorize numerical features with the 0.95 quantile values computed from the training data; standarize the numerical features with the fitted StandardScaler from the training data; one hot encode the categorical features with the fitted OneHotEncoder from the training data.
+\item Output the processed traning data and testing data.
+\end{itemize}
+\itemsep0em
+The model fit part takes the processed traning data and the testing data as inputs, which contains the following steps:
+\begin{itemize}
+\item In the linear model part, we choose elastic net model with $l_1$ ratio 0.5, the best $\lambda$ is searched with the grid search and 5 fold cross validation, the candidate values are from the set $\lbrace 10^{-4+0.5(i-1)}\rbrace$ with $i$ integers from 1 to 15.
+\item In the tree model part, we choose XGBoost regressor with 5000 trees, 0.05 learning rate, max depth 6, subsampling rate 0.5. 
+\item Use the processed training data to fit the two models and use the fitted model to fit the processing test data to give two predictions.
+\item Save the two predictions in mysubmission1.txt and mysubmission2.txt.
+\end{itemize} 
+
+
+\section{Result and Discussion}
+The linear model RMSEs on the 10 folds: 
+\begin{equation}
+0.1204, 0.1167, 0.1169, 0.119, 0.1100, 0.1344, 0.1346, 0.1317, 0.1342, 0.1257
+\end{equation}
+The XGBoost model RMSEs on the 10 folds: 
+\begin{equation}
+0.1173, 0.1202, 0.1121, 0.1187, 0.1082, 0.1263, 0.1337, 0.1258, 0.1342, 0.1172
+\end{equation}
+The RMSEs satisfy the criterions. The XGBoost model result is slightly better (average RMSE 0.1214) than the linear model restul (average RMSE 0.1244). The whole computation time is about 115 seconds on a Macbook Air, 8GB memory, Apple M1 chip.
+
+We did not work too much on hyperparameter tuning. We initially used methods described in the instructor's posts: \url{https://campuswire.com/c/G06C55090/feed/212}, \url{https://campuswire.com/c/G06C55090/feed/213}, but the RMSE from fold 6 is slightly greater than 0.135. Thus we improved the preprocessing process without pre-specifying feature columns to transform as in the previous posts, which give similar RMSEs but the criterions are satified for all 10 folds.
+
+
+
+
+
+
+
+\end{document}

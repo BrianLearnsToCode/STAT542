@@ -1,0 +1,12 @@
+\contentsline {section}{\numberline {1}Langlands duality and higher traces}{1}{section.1}
+\contentsline {section}{\numberline {2}A gentle introduction to ambidexterity via examples}{1}{section.2}
+\contentsline {section}{\numberline {3}Ambidexterity via examples again}{2}{section.3}
+\contentsline {section}{\numberline {4}Proving Bott periodicity for homotopy theorists}{2}{section.4}
+\contentsline {section}{\numberline {5}Higher Lie groups}{2}{section.5}
+\contentsline {section}{\numberline {6}Monads: My Best Friend}{3}{section.6}
+\contentsline {section}{\numberline {7}Towards a Chromatic Langlands Program}{3}{section.7}
+\contentsline {section}{\numberline {8}Superconnections and Thom classes}{4}{section.8}
+\contentsline {section}{\numberline {9}Strict units of group rings}{4}{section.9}
+\contentsline {section}{\numberline {10}Von Neuman algebra and free fermions}{4}{section.10}
+\contentsline {section}{\numberline {11}Clifford algebra, modules and Morita theory}{6}{section.11}
+\contentsline {section}{\numberline {12}Hodge stars and curvature}{7}{section.12}
