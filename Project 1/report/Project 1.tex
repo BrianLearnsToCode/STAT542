@@ -185,7 +185,7 @@ The XGBoost model fitting time:
 \begin{equation}
 9.64, 9.13, 8.68, 8.93, 9.21, 9.75, 9.26, 11.2, 10.05, 9.74
 \end{equation}
-All the time all in the unit of seconds. The RMSEs satisfy the criterions. The XGBoost model result is slightly better (average RMSE 0.1214) than the linear model restul (average RMSE 0.1244). The code is excuted on a Macbook Air, 8GB memory, Apple M1 chip.
+All the time are in the unit of seconds. The RMSEs satisfy the criterions. The XGBoost model result is slightly better (average RMSE 0.1214) than the linear model restul (average RMSE 0.1244). The code is excuted on a Macbook Air, 8GB memory, Apple M1 chip.
 
 We did not work too much on hyperparameter tuning. We initially used methods described in the instructor's posts: \url{https://campuswire.com/c/G06C55090/feed/212}, \url{https://campuswire.com/c/G06C55090/feed/213}, but the RMSE from fold 6 is slightly greater than 0.135. Thus we improved the preprocessing process with automatically choosing features to transform, unlike pre-specifying features as in the posts, which give similar RMSEs but the criterions are satified for all 10 folds.
 
