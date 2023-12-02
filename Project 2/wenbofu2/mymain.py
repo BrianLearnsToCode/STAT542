@@ -121,6 +121,9 @@ def predict(train_url, test_url):
         tmp_pred['IsHoliday'] = holidays.apply(bool)
         test_pred = pd.concat([test_pred, tmp_pred], ignore_index=True)
 
+    test_pred['Store'] = test_pred['Store'].astype(int)
+    test_pred['Dept'] = test_pred['Dept'].astype(int)
+    test_pred = test.merge(test_pred, on = ['Store','Dept','Date','IsHoliday'], how = 'left')
     test_pred['Weekly_Pred'].fillna(0, inplace=True)
     file_path = 'mypred.csv'
     test_pred.to_csv(file_path, index=False)
