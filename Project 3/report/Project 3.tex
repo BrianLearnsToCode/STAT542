@@ -1,0 +1,172 @@
+\documentclass[12pt]{article}
+%\documentclass[aps,reprint]{revtex4-1}
+\usepackage{hyperref}
+\usepackage{graphicx}% Include figure files
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{tipa}
+\usepackage{subfig} % caution: not compatible with revtex4
+\usepackage{xcolor}
+\usepackage{mathrsfs}
+\bibliographystyle{unsrt}
+\theoremstyle{plain}
+
+%%%%%%-- TikZ package
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{arrows}
+\usetikzlibrary{intersections}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{decorations.pathmorphing, patterns,shapes}
+
+
+%\usepackage[margin=2cm]{caption}
+\usepackage[nosort]{cite}
+
+%--- shape control
+\setlength{\topmargin}{-0.3in} 
+\setlength{\oddsidemargin}{.0in}
+%\setlength{\evensidemargin}{-.21in}
+\setlength{\textheight}{8.5in} 
+\setlength{\textwidth}{6.35in}
+\setlength{\footnotesep}{\baselinestretch\baselineskip}
+\newlength{\abstractwidth}
+\setlength{\abstractwidth}{\textwidth}
+\addtolength{\abstractwidth}{-6pc}
+
+%--- title page set
+\renewcommand{\title}[1]{\vbox{\center\bf{\Large{#1}}}\vspace{5mm}}
+\renewcommand{\author}[1]{\vbox{\center#1}\vspace{5mm}}
+\newcommand{\address}[1]{\vbox{\center\em#1}}
+\newcommand{\email}[1]{\vbox{\center\tt#1}\vspace{5mm}}
+  
+%---New math environment
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+
+\newenvironment{pf}[1][Proof]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{defn}[1][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{ex}[1][Example]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{rmk}[1][Remark]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+%---- redefine
+\renewcommand{\bar}{\overline}
+\renewcommand{\tilde}{\widetilde}
+\renewcommand{\hat}{\widehat}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+
+%---- macros 
+\newcommand{\QTr}{\widetilde{\operatorname{Tr}}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\nn}{\nonumber}
+\newcommand{\Pf}{\operatorname{Pf}}
+\newcommand{\const}{\operatorname{const}}
+
+\newcommand{\SU}{\operatorname{SU}}
+\newcommand{\SO}{\operatorname{SO}}
+\newcommand{\SL}{\operatorname{SL}}
+\newcommand{\GL}{\operatorname{GL}}
+\newcommand{\PSL}{\operatorname{PSL}}
+\newcommand{\UU}{\operatorname{U}}
+%---- marcos for math font 
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\calA}{\mathcal{A}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\calD}{\mathcal{D}}
+\newcommand{\calE}{\mathcal{E}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calL}{\mathcal{L}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calN}{\mathcal{N}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\calT}{\mathcal{T}}
+
+\newcommand{\calJ}{\mathcal{J}}
+\newcommand{\Jeff}{\calJ}
+\newcommand{\eff}{\textrm{eff}}
+\newcommand{\Cl}{\textrm{Cl}}
+\newcommand{\Diff}{\operatorname{Diff}}
+\newcommand{\sgn}{\operatorname{sgn}}
+
+
+
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+
+
+\newcommand{\YG}[1]{\textcolor{red}{#1}}
+\newcommand{\WF}[1]{\textcolor{blue}{#1}}
+
+
+
+\usepackage{fancyhdr}
+
+
+%\cfoot{center of the footer!}
+\begin{document}
+
+
+\begin{center}
+\title{STAT 542 Project 3: Movie Review Sentiment Analysis}
+
+\author{Wenbo Fu (679744457), Bingyan Liu (668046518)}
+
+\end{center}
+  
+
+\baselineskip=17.63pt 
+
+
+\section{Data and Objective}
+
+The IMDB movie reviews comprises 50,000 entries, each representing a movie review and a sentiment where 1 represents positive and 0 represents negative. In this project, we are given 5 sets of training/test data. Each set represents a random split of the original movie review data into two halves, with 25,000 samples allocated for training and 25,000 samples for testing. The goal is to predict the sentiment for the testing data while ensuring a vocabulary size that is less than or equal to 1000. The goal is to achieve an AUC score equal to or greater than 0.96 across all five test data sets.
+
+Details can be found in \url{https://liangfgithub.github.io/Proj/F23_Proj3.pdf}. 
+
+\section{Method}
+Our algorithm contains two parts: vocabulary generation and model fit. 
+
+In the vocabulary generation part, we combine the training and testing reviews and use Tf-idf vector to  represent each entry. We include 1-4 word grams and use nltk stopping words. Then we use Lasso logistic regression to reduce the feature size with the training data from the first split. Setting the regularization coefficient $C=1.01$ gives a vocabulary of size 996.
+
+In the model fit part, we use two models and combine the two as a bagging algorithm. The first model is a logistic regression with l2 normalization, the second model is an XGBoost classifier. The regularization in the first model is determined by a 5 fold CV. The hyper parameters in the second model is searched by a 5 fold CV in a greedy way. The hyper parameters are max depth = 4, estimators = 500, learning rate = 0.2, min child weight = 6. We find that the first model has a better performance on AUC thus we put a greater weight(0.7) on the first model and a smaller weight(0.3) on the second model.
+
+
+\section{Result and Discussion}
+The AUC on the 5 splits: 
+\begin{equation}
+0.960, 0.962, 0.962, 0.963, 0.963
+\end{equation}
+The processing time on the 5 splits:
+\begin{equation}
+36.56, 32.73, 35.31, 34.97, 38.76
+\end{equation}
+All the time are in the unit of seconds. The vocabulary generation step processing time is $80.2$ seconds. The code is excuted on a Macbook Air, 8GB memory, Apple M1 chip.
+
+To summarize, we use methods described in the instructor's posts: \url{https://campuswire.com/c/G06C55090/feed/626}. We don't do more on the vocabulary generation process but use a bagging algorithm combining both a logistic regression model  and an xgboost classifier.
+
+
+
+
+
+
+
+\end{document}
