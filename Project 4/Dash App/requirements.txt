@@ -5,3 +5,6 @@ requests
 gunicorn
 tqdm
 scipy
+logging
+typing
+dash_bootstrap_components

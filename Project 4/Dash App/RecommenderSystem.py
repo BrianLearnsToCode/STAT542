@@ -4,14 +4,13 @@ from typing import Dict
 import dash
 import dash_bootstrap_components as dbc
 import pandas as pd
-from dash import Input, Output, dcc, html
+from dash import Input, Output, dcc, html, Dash
 from dash.dependencies import ALL, State
 
 from RSCore import (genres, get_displayed_movies, get_popular_movies,
                     get_recommended_movies)
 
-app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.BOOTSTRAP], 
-               suppress_callback_exceptions=True)
+app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.BOOTSTRAP],suppress_callback_exceptions=True)
 server = app.server
 
 # the style arguments for the sidebar. We use position:fixed and a fixed width
