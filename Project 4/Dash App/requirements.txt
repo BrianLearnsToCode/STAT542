@@ -1,0 +1,7 @@
+dash
+pandas
+numpy
+requests
+gunicorn
+tqdm
+scipy
